@@ -1,0 +1,38 @@
+{
+  "name": "matami-food-platform",
+  "version": "1.0.0",
+  "description": "Mat'ami — Professional multi-restaurant food ordering platform with full admin dashboard",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "artifacts/*",
+    "lib/*",
+    "scripts"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w artifacts/api-server\" \"npm run dev -w artifacts/food-ordering\"",
+    "build": "npm run typecheck && npm run build -ws --if-present",
+    "build:railway": "npm run build -w artifacts/food-ordering && npm run build -w artifacts/api-server",
+    "db:push": "npm run push -w lib/db",
+    "db:migrate": "npm run migrate -w lib/db",
+    "start": "node artifacts/api-server/dist/index.mjs",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "npm run typecheck:libs && npm run typecheck -w artifacts/food-ordering && npm run typecheck -w artifacts/api-server && npm run typecheck -w scripts",
+    "lint": "eslint artifacts/food-ordering/src artifacts/api-server/src --ext .ts,.tsx",
+    "format": "prettier --write \"artifacts/**/*.{ts,tsx,json}\" \"lib/**/*.ts\""
+  },
+  "devDependencies": {
+    "typescript": "~5.9.2",
+    "prettier": "^3.8.1",
+    "concurrently": "^9.1.2"
+  },
+  "overrides": {
+    "esbuild": "0.25.8",
+    "lodash": "4.17.21",
+    "path-to-regexp": "8.4.0",
+    "picomatch": "2.3.2"
+  }
+}

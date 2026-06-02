@@ -1,0 +1,30 @@
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+COPY lib/db/package.json ./lib/db/
+COPY lib/api-zod/package.json ./lib/api-zod/
+COPY lib/api-client-react/package.json ./lib/api-client-react/
+COPY artifacts/api-server/package.json ./artifacts/api-server/
+COPY artifacts/food-ordering/package.json ./artifacts/food-ordering/
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build:railway
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/artifacts/api-server/dist ./artifacts/api-server/dist
+COPY --from=builder /app/artifacts/food-ordering/dist ./artifacts/food-ordering/dist
+COPY --from=builder /app/artifacts/api-server/data ./artifacts/api-server/data
+
+ENV NODE_ENV=production
+ENV PORT=3001
+
+EXPOSE 3001
+
+CMD ["node", "artifacts/api-server/dist/index.mjs"]

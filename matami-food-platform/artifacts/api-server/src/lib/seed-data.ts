@@ -1,0 +1,348 @@
+/**
+ * Default seed data — mirrors artifacts/food-ordering/src/data/seedData.ts
+ * but without Vite-specific image imports (logos loaded from attached_assets at runtime).
+ * Used for auto-seeding an empty PostgreSQL database on first startup.
+ */
+
+export const seedRestaurants = [
+  {
+    id: "sabah-al-lail",
+    name_en: "Sabah Al Lail",
+    name_ar: "صباح الليل",
+    color: "#6A9B3B",
+    description_en: "Morning to Night — authentic breakfast, BBQ, and late-night dining",
+    description_ar: "من الصباح حتى الليل — فطور أصيل وبي بي كيو وعشاء",
+    sort_order: 1,
+    is_active: true,
+  },
+  {
+    id: "asad-al-hamra",
+    name_en: "Asad Al Hamra Al-Bukhari",
+    name_ar: "أسد الحمراء البخاري",
+    color: "#C1121F",
+    description_en: "Legendary Bukhari rice, grills, and traditional Saudi cuisine",
+    description_ar: "أرز بخاري أسطوري وشوايات ومطبخ سعودي أصيل",
+    sort_order: 2,
+    is_active: true,
+  },
+  {
+    id: "chickens-bar",
+    name_en: "Chickens Bar",
+    name_ar: "شيكنز بار",
+    color: "#FF5722",
+    description_en: "Shawarma, Broasted & Burger — the finest crispy chicken in town",
+    description_ar: "شاورما وبروستد وبرغر — أفضل دجاج مقرمش في المدينة",
+    sort_order: 3,
+    is_active: true,
+  },
+];
+
+export const seedBranches = [
+  {
+    id: "sal-riyadh", restaurant_id: "sabah-al-lail",
+    name_en: "Riyadh Branch", name_ar: "فرع الرياض",
+    whatsapp: "966501234567", open: "06:00", close: "02:00",
+    delivery_fee: 15, delivery_time: 30,
+    address_en: "King Fahd Road, Al-Olaya, Riyadh", address_ar: "طريق الملك فهد، العليا، الرياض",
+    is_delivery_enabled: true, pickup_enabled: true, pickup_time: 20, min_order_delivery: 30,
+    delivery_type: "radius", center_lat: 24.6977, center_lng: 46.6872,
+    google_maps_url: "https://maps.google.com/?q=24.697700,46.687200", delivery_radius_km: 8,
+    delivery_fee_tiers: [{ max_km: 3, fee: 10 }, { max_km: 6, fee: 15 }, { max_km: 8, fee: 20 }],
+    is_active: true,
+  },
+  {
+    id: "sal-jeddah", restaurant_id: "sabah-al-lail",
+    name_en: "Jeddah Branch", name_ar: "فرع جدة",
+    whatsapp: "966502345678", open: "06:00", close: "03:00",
+    delivery_fee: 12, delivery_time: 35,
+    address_en: "Corniche Road, Al-Hamra, Jeddah", address_ar: "طريق الكورنيش، الحمراء، جدة",
+    is_delivery_enabled: true, pickup_enabled: true, pickup_time: 15, min_order_delivery: 25,
+    delivery_type: "radius", center_lat: 21.5433, center_lng: 39.1728,
+    google_maps_url: "https://maps.google.com/?q=21.543300,39.172800", delivery_radius_km: 7,
+    delivery_fee_tiers: [{ max_km: 3, fee: 8 }, { max_km: 7, fee: 12 }],
+    is_active: true,
+  },
+  {
+    id: "aah-riyadh", restaurant_id: "asad-al-hamra",
+    name_en: "Riyadh Al-Sahafa Branch", name_ar: "فرع الرياض الصحافة",
+    whatsapp: "966534043777", open: "12:00", close: "01:00",
+    delivery_fee: 10, delivery_time: 25,
+    address_en: "Al-Sahafa District, North Riyadh", address_ar: "حي الصحافة، شمال الرياض",
+    is_delivery_enabled: true, pickup_enabled: true, pickup_time: 20, min_order_delivery: 40,
+    delivery_type: "radius", center_lat: 24.7937, center_lng: 46.6477,
+    google_maps_url: "https://maps.google.com/?q=24.793700,46.647700", delivery_radius_km: 6,
+    delivery_fee_tiers: [{ max_km: 2, fee: 7 }, { max_km: 4, fee: 10 }, { max_km: 6, fee: 15 }],
+    is_active: true,
+  },
+  {
+    id: "aah-dammam", restaurant_id: "asad-al-hamra",
+    name_en: "Dammam Branch", name_ar: "فرع الدمام",
+    whatsapp: "966534043666", open: "11:00", close: "00:00",
+    delivery_fee: 18, delivery_time: 40,
+    address_en: "King Abdullah Road, Al-Shati, Dammam", address_ar: "طريق الملك عبدالله، الشاطئ، الدمام",
+    is_delivery_enabled: true, pickup_enabled: true, pickup_time: 25, min_order_delivery: 50,
+    delivery_type: "radius", center_lat: 26.4207, center_lng: 50.0888,
+    google_maps_url: "https://maps.google.com/?q=26.420700,50.088800", delivery_radius_km: 10,
+    delivery_fee_tiers: [{ max_km: 4, fee: 12 }, { max_km: 8, fee: 18 }, { max_km: 10, fee: 22 }],
+    is_active: true,
+  },
+  {
+    id: "cb-riyadh", restaurant_id: "chickens-bar",
+    name_en: "Riyadh Branch", name_ar: "فرع الرياض",
+    whatsapp: "966555267327", open: "10:00", close: "02:00",
+    delivery_fee: 8, delivery_time: 20,
+    address_en: "Tahlia Street, Al-Murabbaa, Riyadh", address_ar: "شارع التحلية، المربع، الرياض",
+    is_delivery_enabled: true, pickup_enabled: true, pickup_time: 15, min_order_delivery: 20,
+    delivery_type: "radius", center_lat: 24.6872, center_lng: 46.7219,
+    google_maps_url: "https://maps.google.com/?q=24.687200,46.721900", delivery_radius_km: 5,
+    delivery_fee_tiers: [{ max_km: 2, fee: 5 }, { max_km: 4, fee: 8 }, { max_km: 5, fee: 12 }],
+    is_active: true,
+  },
+  {
+    id: "cb-jeddah", restaurant_id: "chickens-bar",
+    name_en: "Jeddah Branch", name_ar: "فرع جدة",
+    whatsapp: "966555267328", open: "09:00", close: "03:00",
+    delivery_fee: 10, delivery_time: 25,
+    address_en: "Palestine Street, Al-Balad, Jeddah", address_ar: "شارع فلسطين، البلد، جدة",
+    is_delivery_enabled: true, pickup_enabled: true, pickup_time: 15, min_order_delivery: 20,
+    delivery_type: "radius", center_lat: 21.4858, center_lng: 39.1925,
+    google_maps_url: "https://maps.google.com/?q=21.485800,39.192500", delivery_radius_km: 6,
+    delivery_fee_tiers: [{ max_km: 2, fee: 6 }, { max_km: 5, fee: 10 }, { max_km: 6, fee: 14 }],
+    is_active: true,
+  },
+];
+
+export const seedCategories = [
+  // Sabah Al Lail
+  { id: "sal-cat-bbq",        restaurant_id: "sabah-al-lail", name_en: "BBQ",                  name_ar: "المشويات",             sort_order: 1 },
+  { id: "sal-cat-burgers",    restaurant_id: "sabah-al-lail", name_en: "Burgers",               name_ar: "البرجر",               sort_order: 2 },
+  { id: "sal-cat-fried",      restaurant_id: "sabah-al-lail", name_en: "Fried Chicken",         name_ar: "البروستد",             sort_order: 3 },
+  { id: "sal-cat-tawajin",    restaurant_id: "sabah-al-lail", name_en: "Tawajin",               name_ar: "الطواجن",              sort_order: 4 },
+  { id: "sal-cat-shawrma",    restaurant_id: "sabah-al-lail", name_en: "Shawarma",              name_ar: "الشاورما",             sort_order: 5 },
+  { id: "sal-cat-potato",     restaurant_id: "sabah-al-lail", name_en: "Potato",                name_ar: "البطاطا",              sort_order: 6 },
+  { id: "sal-cat-sandwiches", restaurant_id: "sabah-al-lail", name_en: "Sandwiches",            name_ar: "الساندويشات",          sort_order: 7 },
+  { id: "sal-cat-salad",      restaurant_id: "sabah-al-lail", name_en: "Salad & Appetizers",    name_ar: "المقبلات والسلطات",    sort_order: 8 },
+  { id: "sal-cat-pizza",      restaurant_id: "sabah-al-lail", name_en: "Pizza",                 name_ar: "البيتزا",              sort_order: 9 },
+  { id: "sal-cat-ftayer",     restaurant_id: "sabah-al-lail", name_en: "Fatayer",               name_ar: "الفطائر",              sort_order: 10 },
+  { id: "sal-cat-boxes",      restaurant_id: "sabah-al-lail", name_en: "Boxes",                 name_ar: "بوكس الجمعات",         sort_order: 11 },
+  // Asad Al Hamra
+  { id: "aah-cat-kabsa",      restaurant_id: "asad-al-hamra", name_en: "Kabsa",                 name_ar: "الكبسات",              sort_order: 1 },
+  { id: "aah-cat-rice",       restaurant_id: "asad-al-hamra", name_en: "Rice",                  name_ar: "الأرز",                sort_order: 2 },
+  { id: "aah-cat-sides",      restaurant_id: "asad-al-hamra", name_en: "Side Dishes",           name_ar: "الإيدامات",            sort_order: 3 },
+  { id: "aah-cat-grilled",    restaurant_id: "asad-al-hamra", name_en: "Grilled Chicken",       name_ar: "دجاج الشواية",         sort_order: 4 },
+  { id: "aah-cat-coal",       restaurant_id: "asad-al-hamra", name_en: "Charcoal Chicken",      name_ar: "دجاج على الفحم",       sort_order: 5 },
+  { id: "aah-cat-pressed",    restaurant_id: "asad-al-hamra", name_en: "Pressed Chicken",       name_ar: "دجاج مضغوط",           sort_order: 6 },
+  { id: "aah-cat-pastries",   restaurant_id: "asad-al-hamra", name_en: "Pastries",              name_ar: "المعجنات",             sort_order: 7 },
+  { id: "aah-cat-appetizers", restaurant_id: "asad-al-hamra", name_en: "Appetizers",            name_ar: "المقبلات",             sort_order: 8 },
+  { id: "aah-cat-drinks",     restaurant_id: "asad-al-hamra", name_en: "Drinks",                name_ar: "المشروبات",            sort_order: 9 },
+  { id: "aah-cat-desserts",   restaurant_id: "asad-al-hamra", name_en: "Desserts",              name_ar: "الحلويات",             sort_order: 10 },
+  { id: "aah-cat-new",        restaurant_id: "asad-al-hamra", name_en: "New Items",             name_ar: "جديدنا",               sort_order: 11 },
+  // Chickens Bar
+  { id: "cb-cat-broasted",    restaurant_id: "chickens-bar",  name_en: "Broasted",              name_ar: "البروستد",             sort_order: 1 },
+  { id: "cb-cat-shawarma",    restaurant_id: "chickens-bar",  name_en: "Shawarma",              name_ar: "الشاورما",             sort_order: 2 },
+  { id: "cb-cat-burgers",     restaurant_id: "chickens-bar",  name_en: "Burgers",               name_ar: "البرغر",               sort_order: 3 },
+  { id: "cb-cat-salad",       restaurant_id: "chickens-bar",  name_en: "Salad & Mezza",         name_ar: "السلطات والمزة",       sort_order: 4 },
+  { id: "cb-cat-desserts",    restaurant_id: "chickens-bar",  name_en: "Desserts",              name_ar: "الحلويات",             sort_order: 5 },
+  { id: "cb-cat-drinks",      restaurant_id: "chickens-bar",  name_en: "Beverages",             name_ar: "المشروبات",            sort_order: 6 },
+  { id: "cb-cat-offers",      restaurant_id: "chickens-bar",  name_en: "Offers",                name_ar: "العروض",               sort_order: 7 },
+];
+
+function item(id: string, rest: string, cat: string, en: string, ar: string, price: number, popular = false, isNew = false) {
+  return { id, restaurant_id: rest, category_id: cat, name_en: en, name_ar: ar, description_en: "", description_ar: "", price, is_available: true, is_popular: popular, is_new: isNew, sort_order: 0 };
+}
+
+export const seedMenuItems = [
+  // SABAH AL LAIL — BBQ
+  item("sal-bbq-1",  "sabah-al-lail", "sal-cat-bbq",        "Kilo Mix BBQ",              "كيلو مشوي مشكل",         130, true),
+  item("sal-bbq-2",  "sabah-al-lail", "sal-cat-bbq",        "½ Kilo Mix BBQ",            "½ كيلو مشوي مشكل",        65),
+  item("sal-bbq-3",  "sabah-al-lail", "sal-cat-bbq",        "¼ Kilo BBQ",                "مشكل مشوي صغير",          35),
+  item("sal-bbq-4",  "sabah-al-lail", "sal-cat-bbq",        "Shish Tawooq",              "صحن شيش طاووق",           30, true),
+  item("sal-bbq-5",  "sabah-al-lail", "sal-cat-bbq",        "Awsal Lahem",               "صحن أوصال لحم",           35),
+  item("sal-bbq-6",  "sabah-al-lail", "sal-cat-bbq",        "Kebab Lahem",               "صحن كباب لحم",            30),
+  item("sal-bbq-7",  "sabah-al-lail", "sal-cat-bbq",        "½ BBQ Chickens",            "½ فروج مشوي",             24),
+  item("sal-bbq-8",  "sabah-al-lail", "sal-cat-bbq",        "BBQ Chickens",              "فروج كامل مشوي",          46, true),
+  item("sal-bbq-9",  "sabah-al-lail", "sal-cat-bbq",        "1/2 Boneless Chicken",      "1/2 دجاج مسحب",           26),
+  item("sal-bbq-10", "sabah-al-lail", "sal-cat-bbq",        "Boneless Chicken",          "حبة دجاج مسحب",           52),
+  // Burgers
+  item("sal-burg-1", "sabah-al-lail", "sal-cat-burgers",    "Beef Burger",               "برغر لحم",                15),
+  item("sal-burg-2", "sabah-al-lail", "sal-cat-burgers",    "Double Beef Burger",        "برغر لحم دبل",            21, true),
+  item("sal-burg-3", "sabah-al-lail", "sal-cat-burgers",    "Chicken Burger (Fried)",    "برغر دجاج مقلي",          14),
+  item("sal-burg-4", "sabah-al-lail", "sal-cat-burgers",    "Combo Beef Burger",         "كومبو برجر لحم",          20),
+  item("sal-burg-5", "sabah-al-lail", "sal-cat-burgers",    "Combo Chicken Burger",      "كزمبو برجر دجاج",         19),
+  item("sal-burg-6", "sabah-al-lail", "sal-cat-burgers",    "Zinger Sandwich",           "ساندويتش زنجر",           14),
+  // Fried Chicken
+  item("sal-fry-1",  "sabah-al-lail", "sal-cat-fried",      "Broasted Nor/Spicy",        "بروستد عادي/حراق",        21, true),
+  item("sal-fry-2",  "sabah-al-lail", "sal-cat-fried",      "Tender Fried/Spicy",        "تيندر مقلي عادي/حراق",    19),
+  item("sal-fry-3",  "sabah-al-lail", "sal-cat-fried",      "Chicken Wings 6 Piece",     "دجاج وينجز - 6",          16),
+  item("sal-fry-4",  "sabah-al-lail", "sal-cat-fried",      "Broasted Meal",             "بوجية بروستد",            22),
+  item("sal-fry-5",  "sabah-al-lail", "sal-cat-fried",      "Broasted Family 8 pcs",     "وجبة عائلي 8 قطع",        48, true),
+  // Tawajin
+  item("sal-taw-1",  "sabah-al-lail", "sal-cat-tawajin",    "Beef & Vege Tagine",        "طاجن لحم بالخضار",        40, true),
+  item("sal-taw-2",  "sabah-al-lail", "sal-cat-tawajin",    "Chicken & Vege Tagine",     "طاجن دجاج بالخضار",       38),
+  item("sal-taw-3",  "sabah-al-lail", "sal-cat-tawajin",    "Kofta Tagine (Baked)",      "طاجن كفتة بالفرن",        38),
+  // Shawarma
+  item("sal-sha-1",  "sabah-al-lail", "sal-cat-shawrma",    "Shawarma Small",            "شاورما صغير",             6),
+  item("sal-sha-2",  "sabah-al-lail", "sal-cat-shawrma",    "Shawarma Sarok",            "شاورما ساروخ",            12, true),
+  item("sal-sha-3",  "sabah-al-lail", "sal-cat-shawrma",    "Arabic Shawarma",           "شاورما عربي",             19),
+  item("sal-sha-4",  "sabah-al-lail", "sal-cat-shawrma",    "Shawarma Plate",            "صحن شاورما",              24),
+  // Potato
+  item("sal-pot-1",  "sabah-al-lail", "sal-cat-potato",     "Potato Wedges",             "بطاطا ودج",               14),
+  item("sal-pot-2",  "sabah-al-lail", "sal-cat-potato",     "Cheesy Potato Bites",       "بطاطا مع الجبن",          12),
+  item("sal-pot-3",  "sabah-al-lail", "sal-cat-potato",     "Golden Fries",              "بطاطا مقلية",             7),
+  item("sal-pot-4",  "sabah-al-lail", "sal-cat-potato",     "Chicken Potato Mix",        "بطاطا مع الدجاج",         18, true),
+  item("sal-pot-5",  "sabah-al-lail", "sal-cat-potato",     "Mozzarella Sticks",         "موزاريلا مقلية",          16),
+  // Sandwiches
+  item("sal-sand-1", "sabah-al-lail", "sal-cat-sandwiches", "Shish Tawooq Sandwich",     "شيش طاووق",               8),
+  item("sal-sand-2", "sabah-al-lail", "sal-cat-sandwiches", "Awsal Sandwich",            "أوصال",                   8),
+  item("sal-sand-3", "sabah-al-lail", "sal-cat-sandwiches", "Kebab Lahem Sandwich",      "كباب لحم",                8),
+  item("sal-sand-4", "sabah-al-lail", "sal-cat-sandwiches", "Kebab Chicken",             "كباب دجاج",               8),
+  item("sal-sand-5", "sabah-al-lail", "sal-cat-sandwiches", "Egg & Cheese Sandwich",     "بيض مقلي مع الجبن",       5),
+  item("sal-sand-6", "sabah-al-lail", "sal-cat-sandwiches", "Falafel Mixed",             "فلافل مشكل",              8),
+  // Salad & Appetizers
+  item("sal-sal-1",  "sabah-al-lail", "sal-cat-salad",      "Caesar Salad",              "سلطة السيزر",             17),
+  item("sal-sal-2",  "sabah-al-lail", "sal-cat-salad",      "Fattoush Salad",            "سلطة فتوش",               10),
+  item("sal-sal-3",  "sabah-al-lail", "sal-cat-salad",      "Hummus",                    "حمص",                     10),
+  item("sal-sal-4",  "sabah-al-lail", "sal-cat-salad",      "Vine Leaves",               "ورق عنب",                 11),
+  item("sal-sal-5",  "sabah-al-lail", "sal-cat-salad",      "Moutabal",                  "متبل",                    10),
+  item("sal-sal-6",  "sabah-al-lail", "sal-cat-salad",      "Mixed Appetizers",          "مقبلات مشكل",             18),
+  // Pizza
+  item("sal-piz-1",  "sabah-al-lail", "sal-cat-pizza",      "Pepperoni Pizza",           "بيتزا بيبروني",           23, true),
+  item("sal-piz-2",  "sabah-al-lail", "sal-cat-pizza",      "Sausage Pizza",             "بيتزا النقانق",           23),
+  item("sal-piz-3",  "sabah-al-lail", "sal-cat-pizza",      "Mexican Pizza",             "بيتزا مكسيكي",            23),
+  item("sal-piz-4",  "sabah-al-lail", "sal-cat-pizza",      "Chicken Ranch Pizza",       "بيتزا دجاج رانش",         24),
+  item("sal-piz-5",  "sabah-al-lail", "sal-cat-pizza",      "Margherita Pizza",          "بيتزا مارغريتا",          20),
+  item("sal-piz-6",  "sabah-al-lail", "sal-cat-pizza",      "Half & Half Pizza",         "بيتزا نص نص",             30),
+  // Fatayer
+  item("sal-ft-1",   "sabah-al-lail", "sal-cat-ftayer",     "Cheese Fatayer",            "فطيرة جبن سائل",          7),
+  item("sal-ft-2",   "sabah-al-lail", "sal-cat-ftayer",     "Cheese & Honey Fatayer",    "جبن سائل مع العسل",       8),
+  item("sal-ft-3",   "sabah-al-lail", "sal-cat-ftayer",     "Meat Fatayer",              "فطيرة نقانق مع الجبنة",   9),
+  item("sal-ft-4",   "sabah-al-lail", "sal-cat-ftayer",     "Chicken Fatayer",           "فطيرة دجاج بالجبن",       10),
+  item("sal-ft-5",   "sabah-al-lail", "sal-cat-ftayer",     "Spinach Fatayer",           "فطيرة سباناخ",            7),
+  item("sal-ft-6",   "sabah-al-lail", "sal-cat-ftayer",     "Labneh Fatayer",            "فطيرة لبنة",              7),
+  item("sal-ft-7",   "sabah-al-lail", "sal-cat-ftayer",     "Shakshuka Fatayer (Oven)",  "شكشوكة فرن",              10),
+  // Boxes
+  item("sal-box-1",  "sabah-al-lail", "sal-cat-boxes",      "Pastries Box",              "بوكس المعجنات المشكل",    46, true),
+  item("sal-box-2",  "sabah-al-lail", "sal-cat-boxes",      "Sabah Al Lail Breakfast Box","بوكس فطور صباح الليل",   42, true),
+  item("sal-box-3",  "sabah-al-lail", "sal-cat-boxes",      "Sababak Ahla Box",          "بوكس صباحك احلى",         48),
+  item("sal-box-4",  "sabah-al-lail", "sal-cat-boxes",      "Sandwiches Box",            "بوكس الساندويشات",        44),
+
+  // ASAD AL HAMRA — Kabsa
+  item("aah-kab-1",  "asad-al-hamra", "aah-cat-kabsa",      "Bukhari Meat Kabsa",        "كبسة لحم بخاري",          89, true),
+  item("aah-kab-2",  "asad-al-hamra", "aah-cat-kabsa",      "Kabli Meat Kabsa",          "كبسة لحم كابلي",          89),
+  // Rice
+  item("aah-rice-1", "asad-al-hamra", "aah-cat-rice",       "Bukhari Rice",              "أرز بخاري",               8),
+  item("aah-rice-2", "asad-al-hamra", "aah-cat-rice",       "Biryani Rice",              "أرز برياني",              8),
+  item("aah-rice-3", "asad-al-hamra", "aah-cat-rice",       "Mixed Rice",                "أرز مشكل",                8),
+  item("aah-rice-4", "asad-al-hamra", "aah-cat-rice",       "Plain Rice (Sayor)",        "أرز صيور",                8),
+  // Sides
+  item("aah-sid-1",  "asad-al-hamra", "aah-cat-sides",      "Mixed Vegetables",          "خضار مشكل",               8),
+  item("aah-sid-2",  "asad-al-hamra", "aah-cat-sides",      "Okra",                      "بامية",                   8),
+  item("aah-sid-3",  "asad-al-hamra", "aah-cat-sides",      "Meat & Tomato Stew",        "مسفهه باللحم",            8),
+  item("aah-sid-4",  "asad-al-hamra", "aah-cat-sides",      "Molokhia",                  "ملوخية",                  8),
+  item("aah-sid-5",  "asad-al-hamra", "aah-cat-sides",      "Baked Mixed Vegetables",    "خضار مشكل بالفرن",        8),
+  // Grilled Chicken
+  item("aah-gr-1",   "asad-al-hamra", "aah-cat-grilled",    "Quarter Grilled Chicken",   "ربع دجاج شواية",          12),
+  item("aah-gr-2",   "asad-al-hamra", "aah-cat-grilled",    "Half Chicken & Rice",       "نصف دجاج مع الأرز",       23, true),
+  item("aah-gr-3",   "asad-al-hamra", "aah-cat-grilled",    "Whole Chicken & Rice",      "حبة شواية مع الأرز",      44, true),
+  item("aah-gr-4",   "asad-al-hamra", "aah-cat-grilled",    "Half Chicken Plain",        "نصف دجاجة سادة",          16),
+  item("aah-gr-5",   "asad-al-hamra", "aah-cat-grilled",    "Whole Chicken Plain",       "حبة شواية سادة",          32),
+  // Charcoal Chicken
+  item("aah-ch-1",   "asad-al-hamra", "aah-cat-coal",       "Half Charcoal Chicken & Rice","½ دجاج على الفحم وأرز", 23),
+  item("aah-ch-2",   "asad-al-hamra", "aah-cat-coal",       "Whole Charcoal Chicken & Rice","حبة على الفحم مع أرز",  46),
+  item("aah-ch-3",   "asad-al-hamra", "aah-cat-coal",       "Half Charcoal Plain",       "نصف فحمة سادة",           16),
+  item("aah-ch-4",   "asad-al-hamra", "aah-cat-coal",       "Whole Charcoal Plain",      "حبة فحمة سادة",           32),
+  // Pressed Chicken
+  item("aah-pr-1",   "asad-al-hamra", "aah-cat-pressed",    "Half Bukhari Pressed",      "نصف مضغوط بخاري",         24, true),
+  item("aah-pr-2",   "asad-al-hamra", "aah-cat-pressed",    "Whole Bukhari Pressed",     "حبة مضغوط بخاري",         48),
+  item("aah-pr-3",   "asad-al-hamra", "aah-cat-pressed",    "Half Kabli Pressed",        "نصف مضغوط كابلي",         24),
+  item("aah-pr-4",   "asad-al-hamra", "aah-cat-pressed",    "Whole Kabli Pressed",       "حبة مضغوط كابلي",         48),
+  // Pastries
+  item("aah-pa-1",   "asad-al-hamra", "aah-cat-pastries",   "Shishbarak",                "ششبرة",                   15),
+  item("aah-pa-2",   "asad-al-hamra", "aah-cat-pastries",   "Mantou",                    "منتو",                    10),
+  item("aah-pa-3",   "asad-al-hamra", "aah-cat-pastries",   "Farmooza",                  "فرموزة",                  10),
+  // Appetizers
+  item("aah-ap-1",   "asad-al-hamra", "aah-cat-appetizers", "Hummus",                    "حمص",                     7),
+  item("aah-ap-2",   "asad-al-hamra", "aah-cat-appetizers", "Mantou",                    "منتو",                    7),
+  item("aah-ap-3",   "asad-al-hamra", "aah-cat-appetizers", "Baba Ghanouj",              "بابا غنوج",               7),
+  item("aah-ap-4",   "asad-al-hamra", "aah-cat-appetizers", "Cucumber Yogurt",           "خيار باللبن",             7),
+  item("aah-ap-5",   "asad-al-hamra", "aah-cat-appetizers", "Mixed Salad Izola",         "سلطة إيزولا",             7),
+  item("aah-ap-6",   "asad-al-hamra", "aah-cat-appetizers", "Bukhari Salad",             "سلطة بخاري",              6),
+  item("aah-ap-7",   "asad-al-hamra", "aah-cat-appetizers", "Mixed Appetizers",          "مقبلات مشكل",             13),
+  item("aah-ap-8",   "asad-al-hamra", "aah-cat-appetizers", "Tahini",                    "طحينة",                   2),
+  item("aah-ap-9",   "asad-al-hamra", "aah-cat-appetizers", "Dafoos",                    "دفوس",                    2),
+  // Drinks
+  item("aah-dr-1",   "asad-al-hamra", "aah-cat-drinks",     "Al-Marai Milk 180ml",       "لبن المراعي 180",         2),
+  item("aah-dr-2",   "asad-al-hamra", "aah-cat-drinks",     "Al-Marai Milk 360ml",       "لبن المراعي 360",         3.5),
+  item("aah-dr-3",   "asad-al-hamra", "aah-cat-drinks",     "Al-Marai Milk 1L",          "لبن المراعي 1 لتر",       3),
+  item("aah-dr-4",   "asad-al-hamra", "aah-cat-drinks",     "Al-Marai Milk 2L",          "لبن المراعي 2 لتر",       12),
+  item("aah-dr-5",   "asad-al-hamra", "aah-cat-drinks",     "Yogurt",                    "زبادي",                   3),
+  item("aah-dr-6",   "asad-al-hamra", "aah-cat-drinks",     "Water",                     "مياه",                    2),
+  item("aah-dr-7",   "asad-al-hamra", "aah-cat-drinks",     "Pepsi / Diet Pepsi",        "بيبسي / بيبسي دايت",      3.5),
+  item("aah-dr-8",   "asad-al-hamra", "aah-cat-drinks",     "7Up / Diet 7Up",            "سفن آب / دايت سفن آب",    3.5),
+  // Desserts
+  item("aah-des-1",  "asad-al-hamra", "aah-cat-desserts",   "Cream Caramel",             "كريم كراميل",             8),
+  item("aah-des-2",  "asad-al-hamra", "aah-cat-desserts",   "Muhallabia",                "مهلبية",                  8),
+  item("aah-des-3",  "asad-al-hamra", "aah-cat-desserts",   "Sutlaj",                    "سوتلاج",                  8),
+  item("aah-des-4",  "asad-al-hamra", "aah-cat-desserts",   "Cream/Nutella Kunafa",      "كنافة قشدة/نوتيلا",       10, true),
+  // New Items
+  item("aah-new-1",  "asad-al-hamra", "aah-cat-new",        "Diet Chicken (Whole)",      "فروج دايت",               30, false, true),
+  item("aah-new-2",  "asad-al-hamra", "aah-cat-new",        "Grilled Chicken",           "فروج شواية",              29, false, true),
+  item("aah-new-3",  "asad-al-hamra", "aah-cat-new",        "Sisi Grilled Chicken",      "فروج شواية سايسي",        29, false, true),
+  item("aah-new-4",  "asad-al-hamra", "aah-cat-new",        "Grilled Chicken with Potato/Rice","فروج شواية بطاطا أو أرز",29, false, true),
+
+  // CHICKENS BAR — Broasted
+  item("cb-br-1",    "chickens-bar",  "cb-cat-broasted",    "Broasted 4 Piece",          "بروستد عادي 4 قطع",       20, true),
+  item("cb-br-2",    "chickens-bar",  "cb-cat-broasted",    "Broasted Spicy 4 Piece",    "بروستد حراق 4 قطع",       20, true),
+  item("cb-br-3",    "chickens-bar",  "cb-cat-broasted",    "Tender Fried Spicy",        "تيندر مقلي حراق",         20),
+  item("cb-br-4",    "chickens-bar",  "cb-cat-broasted",    "Tender Fried",              "تيندر مقلي عادي",         20),
+  item("cb-br-5",    "chickens-bar",  "cb-cat-broasted",    "Broasted Family 8 Piece",   "بروستد عائلي 8 قطع",      44, true),
+  item("cb-br-6",    "chickens-bar",  "cb-cat-broasted",    "Chicken Wings",             "دجاج وينجز",              18),
+  item("cb-br-7",    "chickens-bar",  "cb-cat-broasted",    "Chicken Ribs",              "دجاج ريبز",               24),
+  // Shawarma
+  item("cb-sha-1",   "chickens-bar",  "cb-cat-shawarma",    "Shawarma Small",            "شاورما صغير",             7),
+  item("cb-sha-2",   "chickens-bar",  "cb-cat-shawarma",    "Shawarma Sarok",            "شاورما ساروخ",            13, true),
+  item("cb-sha-3",   "chickens-bar",  "cb-cat-shawarma",    "Arabic Shawarma",           "شاورما عربي",             21),
+  item("cb-sha-4",   "chickens-bar",  "cb-cat-shawarma",    "Shawarma Plate",            "صحن شاورما",              25, true),
+  // Burgers
+  item("cb-burg-1",  "chickens-bar",  "cb-cat-burgers",     "Beef Burger",               "برغر لحم",                22),
+  item("cb-burg-2",  "chickens-bar",  "cb-cat-burgers",     "Chicken Burger",            "برغر دجاج مقلي",          20, true),
+  item("cb-burg-3",  "chickens-bar",  "cb-cat-burgers",     "Slider Chicken",            "سلايدر دجاج",             24),
+  item("cb-burg-4",  "chickens-bar",  "cb-cat-burgers",     "Slider Beef",               "سلايدر لحم",              25),
+  // Salad & Mezza
+  item("cb-sal-1",   "chickens-bar",  "cb-cat-salad",       "Caesar Salad",              "سلطة السيزر",             20),
+  item("cb-sal-2",   "chickens-bar",  "cb-cat-salad",       "Hummus",                    "حمص",                     12),
+  item("cb-sal-3",   "chickens-bar",  "cb-cat-salad",       "Potato Wedge",              "بطاطا ودج",               14),
+  item("cb-sal-4",   "chickens-bar",  "cb-cat-salad",       "Potato Cheese",             "بطاطا مع الجين",          12),
+  item("cb-sal-5",   "chickens-bar",  "cb-cat-salad",       "Potato Fries",              "بطاطا مقلية",             8),
+  item("cb-sal-6",   "chickens-bar",  "cb-cat-salad",       "Potato Chicken",            "بطاطا مع الدجاج",         18, true),
+  item("cb-sal-7",   "chickens-bar",  "cb-cat-salad",       "Vine Leaves",               "ورق عنب",                 10),
+  // Desserts
+  item("cb-des-1",   "chickens-bar",  "cb-cat-desserts",    "Tiramisu",                  "تيراميسو",                18, true),
+  item("cb-des-2",   "chickens-bar",  "cb-cat-desserts",    "Brownies",                  "براونيز",                 18),
+  item("cb-des-3",   "chickens-bar",  "cb-cat-desserts",    "Cheese Cake",               "شيز كيك",                 18),
+  // Beverages
+  item("cb-drk-1",   "chickens-bar",  "cb-cat-drinks",      "Orange Juice",              "عصير برتقال طبيعي",       10),
+  item("cb-drk-2",   "chickens-bar",  "cb-cat-drinks",      "Cocktail Juice",            "كوكتيل",                  10),
+  item("cb-drk-3",   "chickens-bar",  "cb-cat-drinks",      "Pomegranate Juice",         "رمان",                    10),
+  item("cb-drk-4",   "chickens-bar",  "cb-cat-drinks",      "Pepsi",                     "بيبسي",                   3),
+  item("cb-drk-5",   "chickens-bar",  "cb-cat-drinks",      "7UP",                       "سفن آب",                  3),
+  item("cb-drk-6",   "chickens-bar",  "cb-cat-drinks",      "Diet Pepsi",                "دايت بيبسي",              3),
+  item("cb-drk-7",   "chickens-bar",  "cb-cat-drinks",      "Diet 7UP",                  "دايت سفن آب",             3),
+  item("cb-drk-8",   "chickens-bar",  "cb-cat-drinks",      "Small Water",               "مياه صغير",               1),
+  item("cb-drk-9",   "chickens-bar",  "cb-cat-drinks",      "Family Pepsi",              "بيبسي عائلي",             6),
+  // Offers
+  item("cb-off-1",   "chickens-bar",  "cb-cat-offers",      "For You Meal", "عرض فور يو (بروستد + بطاطا جبن + مشروب)", 25, true),
+];
+
+export const seedOffers = [
+  { id: "offer-1", title_en: "10% Off All Orders", title_ar: "خصم 10% على جميع الطلبات", description_en: "Use code SAVE10 at checkout", description_ar: "استخدم كود SAVE10 عند الدفع", type: "percentage", value: 10, restaurant_id: "global", active: true, code: "SAVE10", sort_order: 1 },
+  { id: "offer-2", title_en: "First Order 20% Off", title_ar: "خصم 20% على أول طلب", description_en: "Use code FIRST20 for your first order", description_ar: "استخدم FIRST20 لأول طلب", type: "percentage", value: 20, restaurant_id: "global", active: true, code: "FIRST20", sort_order: 2 },
+  { id: "offer-3", title_en: "Free Delivery", title_ar: "توصيل مجاني", description_en: "Free delivery with code FREESHIP", description_ar: "توصيل مجاني مع كود FREESHIP", type: "free_delivery", value: 0, restaurant_id: "global", active: true, code: "FREESHIP", sort_order: 3 },
+  { id: "offer-4", title_en: "Auto 10% for Orders Over 50 SAR", title_ar: "خصم تلقائي 10% للطلبات فوق 50 ريال", description_en: "Orders over 50 SAR get 10% discount", description_ar: "الطلبات فوق 50 ريال تحصل على خصم تلقائي", type: "percentage", value: 10, restaurant_id: "global", active: true, sort_order: 4 },
+];
+
+export const seedCoupons = [
+  { code: "SAVE10",   type: "percentage",    value: 10, active: true, description_en: "10% off your order",          description_ar: "خصم 10% على طلبك" },
+  { code: "FIRST20",  type: "percentage",    value: 20, active: true, description_en: "20% first-time discount",     description_ar: "خصم 20% للمرة الأولى" },
+  { code: "FREESHIP", type: "free_delivery", value: 0,  active: true, description_en: "Free delivery",               description_ar: "توصيل مجاني" },
+];
