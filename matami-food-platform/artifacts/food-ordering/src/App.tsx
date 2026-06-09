@@ -76,6 +76,14 @@ function AdminGuard({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  // Fired by the store when the server rejects the JWT (expired session) —
+  // drop back to the login screen without a page reload.
+  useEffect(() => {
+    const onExpired = () => setState("unauthed");
+    window.addEventListener("admin-session-expired", onExpired);
+    return () => window.removeEventListener("admin-session-expired", onExpired);
+  }, []);
+
   if (state === "loading") return <Spinner />;
 
   if (state === "unauthed") {

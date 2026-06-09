@@ -359,6 +359,16 @@ export function setAdminToken(token: string | null): void {
   else sessionStorage.removeItem("admin_token");
 }
 
+/**
+ * The admin JWT expires after 24h. When the server answers 401 we clear the
+ * stale token and notify AdminGuard (which shows the login screen) without
+ * reloading the page, so unpublished in-memory edits survive the re-login.
+ */
+function handleSessionExpired(): void {
+  setAdminToken(null);
+  window.dispatchEvent(new Event("admin-session-expired"));
+}
+
 /** Store keys that are backed by the PostgreSQL REST API */
 const API_KEYS = new Set<string>([
   "store_restaurants", "store_branches", "store_categories", "store_menu_items",
@@ -406,6 +416,10 @@ export async function publishCatalog(): Promise<{ ok: boolean; error?: string }>
       body: JSON.stringify(snapshot),
     });
     if (res.ok) return { ok: true };
+    if (res.status === 401) {
+      handleSessionExpired();
+      return { ok: false, error: "Session expired — please log in again" };
+    }
     const body = await res.json().catch(() => ({})) as { error?: string };
     return { ok: false, error: body.error ?? `Server error ${res.status}` };
   } catch (err) {
@@ -433,11 +447,12 @@ export async function _pushToApi(): Promise<void> {
     settings:                  _memOne["store_app_settings"] ?? undefined,
   };
   try {
-    await fetch("/api/data", {
+    const res = await fetch("/api/data", {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       body: JSON.stringify(snapshot),
     });
+    if (res.status === 401) handleSessionExpired();
   } catch { /* silent — local state is still intact */ }
 }
 
