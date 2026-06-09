@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --th-primary: #16a34a;
+  --th-primary-fg: #ffffff;
+  --th-bg: #fafaf9;
+  --th-surface: #ffffff;
+  --th-text: #1c1917;
+  --th-muted: #78716c;
+  --th-accent: #f59e0b;
+  --th-font: "Cairo", sans-serif;
+  --th-radius: 16px;
+  --th-btn-radius: 16px;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--th-font);
+  background: var(--th-bg);
+  color: var(--th-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbar for horizontal category strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
