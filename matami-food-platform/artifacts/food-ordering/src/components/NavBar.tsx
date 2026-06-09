@@ -3,7 +3,6 @@ import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { settingsStore } from "@/lib/store";
 import { useStore } from "@/hooks/useStore";
-import matAmiLogo from "@assets/لوجو_الموقع_مطعمي_1776635393637.png";
 
 const LOGO_SIZE = {
   sm: "h-5 w-5",
@@ -19,7 +18,7 @@ export default function NavBar() {
   const isHome = location === "/";
   const logoClass = LOGO_SIZE[settings.logo_size || "md"];
 
-  const logoSrc = settings.platform_logo_url || matAmiLogo;
+  const logoSrc = settings.platform_logo_url || "/favicon.svg";
   const platformNameEn = settings.platform_name_en || "Mat'ami";
   const platformNameAr = settings.platform_name_ar || "مطعمي";
 
