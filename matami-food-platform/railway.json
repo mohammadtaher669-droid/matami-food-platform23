@@ -5,8 +5,8 @@
     "buildCommand": "npm install && npm run build:railway"
   },
   "deploy": {
-    "startCommand": "node artifacts/api-server/dist/index.mjs",
     "preDeployCommand": "npm run db:push",
+    "startCommand": "node artifacts/api-server/dist/index.mjs",
     "healthcheckPath": "/api/healthz",
     "healthcheckTimeout": 30,
     "restartPolicyType": "ON_FAILURE",

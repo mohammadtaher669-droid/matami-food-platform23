@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Lock, Eye, EyeOff, Loader2 } from "lucide-react";
-import matAmiLogo from "@assets/لوجو_الموقع_مطعمي_1776635393637.png";
+
+const matAmiLogo = "/favicon.svg";
 
 export async function verifyAdminToken(token: string): Promise<boolean> {
   try {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LayoutDashboard, UtensilsCrossed, MapPin, BookOpen, Tag, Star, LogOut, Menu, X, Percent, Settings, Navigation, Users, BarChart2, Image, Megaphone, Printer, Palette, ListOrdered, Store, SlidersHorizontal, Layers, FileUp, AlertTriangle, ExternalLink } from "lucide-react";
-import matAmiLogo from "@assets/لوجو_الموقع_مطعمي_1776635393637.png";
+const matAmiLogo = "/favicon.svg";
 
 const NAV = [
   { path: "/admin", label_en: "Dashboard", label_ar: "لوحة التحكم", icon: LayoutDashboard, exact: true },

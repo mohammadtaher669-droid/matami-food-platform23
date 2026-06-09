@@ -5,10 +5,11 @@
 
 import type { Restaurant, Branch, Category, MenuItem, Offer, Coupon } from "@/lib/store";
 
-// Import logos
-import chickensBarLogo from "@assets/chickens_bar_1776635384731.png";
-import asadAlHamraLogo from "@assets/اسد_الحمرا_1776635384732.png";
-import sabahAlLailLogo from "@assets/صباح_الليل_1776635384733.png";
+// Logo placeholders — the original PNG assets are not in the repo.
+// Real logos are stored in the database and can be uploaded from the admin panel.
+const chickensBarLogo = "/favicon.svg";
+const asadAlHamraLogo = "/favicon.svg";
+const sabahAlLailLogo = "/favicon.svg";
 
 export const seedRestaurants: Restaurant[] = [
   {
