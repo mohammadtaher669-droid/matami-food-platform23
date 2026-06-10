@@ -1,0 +1,13 @@
+# Nixpacks build configuration for Railway
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["npm install"]
+
+[phases.build]
+# prisma generate + vite build (web) + tsc build (server)
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm start"
